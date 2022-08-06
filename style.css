@@ -1,12 +1,11 @@
 /*Reset*/
 *{
     margin: 0;
-    padding:0;
+    padding: 0;
     box-sizing: border-box;
 }
 /*Body*/
 .grid{
-    background-color: rgba(165, 42, 42, 0.192);
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: max-content auto max-content;
@@ -14,6 +13,9 @@
 }
 /*Header*/
 .navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: rgba(0, 255, 255, 0.192);
 }
 .titulo{
@@ -23,13 +25,13 @@
 /*Cards*/
 .card_container{
     display: flex;
+    align-items: center;
+    flex-direction: column;
     padding-top: 10rem;
-    margin-left:10rem ;
-    justify-content: center;
 }
 
 .card{
-    margin-right: 10rem;
+    margin: 2rem;
     border-radius: 5px;
     background-color: gray;
 }
@@ -37,7 +39,7 @@
     width: 150px;
     height: 180px;
 }
-.tamañoremera{
+.tamanioremera{
     width: 150px;
     height: 200px;
     background-size: cover;
@@ -48,4 +50,5 @@
     width: 100%;
     justify-content: center;
     padding-top: 10rem;
+    padding: 1rem;
 }
