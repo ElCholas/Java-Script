@@ -13,12 +13,9 @@
 }
 /*Header*/
 .navbar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: rgba(0, 255, 255, 0.192);
 }
-.titulo{
+.subTitulo{
     text-align: center;
 }
 
@@ -51,4 +48,33 @@
     justify-content: center;
     padding-top: 10rem;
     padding: 1rem;
+}
+/* Carrito */
+.img{
+    width: 60px;
+}
+.carrito{
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem;
+}
+.logoTacho{
+    width: 15px; 
+    height: 10px;
+}
+.button{
+    display: flex;
+    justify-content: end;
+}
+.precioTotal{
+    display: flex;
+    padding: 2rem;
+    margin-right: 5rem;
+    background-color: black;
+    color: white;
+    border-radius: 1rem;
+}
+.Eliminar{
+    height: 40px;
+    width: 40px;
 }
