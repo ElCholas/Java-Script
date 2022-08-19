@@ -7,13 +7,6 @@ class Producto {
         this.talle = talle;
     }
 }
-/* Boton eliminar */
-// const eliminarProducto = (eliminarProducto) => {
-//     const product = carrito.find((carrito) => carrito.id === eliminarProducto)
-//     const indice = carrito.indexOf(product)
-//     carrito.splice(indice, 1)
-//     agregarCarrito()
-// }
 /* Constantes */
 const precioTotal = document.getElementById("precioTotal")
 const carro = document.getElementById("contenedorCarrito")
@@ -134,7 +127,6 @@ const agregarCarrito = () => {
         <img src="${carrito.img}" class="img"></img>
         <p>${carrito.nombre}</p>
         <p>$${carrito.precio}</p>
-        <button onclick= "eliminarProducto(${carrito.id})" class="Eliminar"><i class="fa-solid fa-trash-can logoTacho"></i></button>
         `
         carro.appendChild(div)
     })
