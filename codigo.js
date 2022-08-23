@@ -7,6 +7,9 @@ class Producto {
         this.talle = talle;
     }
 }
+if(localStorage.getItem("carrito")){
+    carrito=JSON.parse(localStorage.getItem("carrito"))
+}
 /* Constantes */
 const precioTotal = document.getElementById("precioTotal")
 const carro = document.getElementById("contenedorCarrito")
@@ -117,6 +120,9 @@ for (const producto of productos) {
         agregarCarrito()
     })
 }
+/* Operador Avanzado */
+carrito.length === 0 ? contenedorCarrito.innerHTML=`<th scope="row" colspan="5">Carrito vacío, agregue su producto.</th>`:
+contenedorCarrito.innerHTML= ""
 /* Carrito */
 const agregarCarrito = () => {
     carro.innerHTML = ""
