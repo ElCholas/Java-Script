@@ -7,6 +7,7 @@ class Producto {
         this.talle = talle;
     }
 }
+/* Local Storage */
 if(localStorage.getItem("carrito")){
     carrito=JSON.parse(localStorage.getItem("carrito"))
 }
@@ -121,7 +122,7 @@ for (const producto of productos) {
     })
 }
 /* Operador Avanzado */
-carrito.length === 0 ? contenedorCarrito.innerHTML=`<th scope="row" colspan="5">Carrito vacío, agregue su producto.</th>`:
+carrito.length === 0 ? contenedorCarrito.innerHTML=`<p>Carrito vacío, agregue su producto.</p>`:
 contenedorCarrito.innerHTML= ""
 /* Carrito */
 const agregarCarrito = () => {
