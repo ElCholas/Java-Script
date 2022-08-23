@@ -78,3 +78,10 @@
     height: 40px;
     width: 40px;
 }
+.carritoVacio{
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}

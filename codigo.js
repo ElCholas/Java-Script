@@ -10,6 +10,7 @@ class Producto {
 /* Local Storage */
 if(localStorage.getItem("carrito")){
     carrito=JSON.parse(localStorage.getItem("carrito"))
+    agregarCarrito()
 }
 /* Constantes */
 const precioTotal = document.getElementById("precioTotal")
@@ -117,24 +118,51 @@ for (const producto of productos) {
         console.log("agregaste el producto al carrito.")
         console.log(producto)
         carrito.push(producto)
-        localStorage.setItem("Carrito", JSON.stringify(carrito))
-        agregarCarrito()
-    })
-}
-/* Operador Avanzado */
-carrito.length === 0 ? contenedorCarrito.innerHTML=`<p>Carrito vacío, agregue su producto.</p>`:
-contenedorCarrito.innerHTML= ""
-/* Carrito */
-const agregarCarrito = () => {
-    carro.innerHTML = ""
-    carrito.forEach((carrito) => {
-        const div = document.createElement("div")
-        div.className = "carrito"
-        div.innerHTML = `
+        Swal.fire(
+            'Producto: '+producto.nombre,
+            'Agregado al carrito',
+            'success' 
+            )
+            agregarCarrito()
+        })
+    }
+    /* Operador Avanzado */
+    carrito.length === 0 
+    ? (contenedorCarrito.innerHTML=`<p class= "carritoVacio">Carrito vacío, agregue su producto.</p>`)
+    : (contenedorCarrito.innerHTML= "")
+    /* Comprar */
+    let comprarCarrito = document.getElementById("comprar")
+    comprarCarrito.onclick=()=>{
+        localStorage.removeItem("carrito",JSON.stringify(carrito))
+        carro.innerHTML = ""
+        carrito.length !== 0 ?
+        //Si el carrito tiene productos y se presiona comprar.
+        Swal.fire(
+            `¡Su compra se ha realizado con exito!`,
+            `No dude en volver a comprarnos`,
+            `success`
+        )
+        :
+        //Si el carrito no posee productos y se presiona comprar. 
+        Swal.fire(
+            `¡Aun no posee productos en su carrito!`,
+            `Seleccione el prodcuto que desee y vuelva a intentarlo`,
+            `error`
+        );
+        carrito.length=0;
+    }
+    /* Carrito */
+    const agregarCarrito = () => {
+        carro.innerHTML = ""
+        carrito.forEach((carrito) => {
+            const div = document.createElement("div")
+            div.className = "carrito"
+            div.innerHTML = `
         <img src="${carrito.img}" class="img"></img>
         <p>${carrito.nombre}</p>
         <p>$${carrito.precio}</p>
         `
+        localStorage.setItem("Carrito", JSON.stringify(carrito))
         carro.appendChild(div)
     })
     precioTotal.innerText = carrito.reduce((acumulador, productos) => acumulador + productos.precio, 0) 
