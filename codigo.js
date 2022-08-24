@@ -7,11 +7,6 @@ class Producto {
         this.talle = talle;
     }
 }
-/* Local Storage */
-if(localStorage.getItem("carrito")){
-    carrito=JSON.parse(localStorage.getItem("carrito"))
-    agregarCarrito()
-}
 /* Constantes */
 const precioTotal = document.getElementById("precioTotal")
 const carro = document.getElementById("contenedorCarrito")
@@ -141,29 +136,34 @@ for (const producto of productos) {
             `¡Su compra se ha realizado con exito!`,
             `No dude en volver a comprarnos`,
             `success`
-        )
-        :
-        //Si el carrito no posee productos y se presiona comprar. 
-        Swal.fire(
-            `¡Aun no posee productos en su carrito!`,
-            `Seleccione el prodcuto que desee y vuelva a intentarlo`,
-            `error`
-        );
-        carrito.length=0;
-    }
-    /* Carrito */
-    const agregarCarrito = () => {
-        carro.innerHTML = ""
-        carrito.forEach((carrito) => {
-            const div = document.createElement("div")
-            div.className = "carrito"
-            div.innerHTML = `
-        <img src="${carrito.img}" class="img"></img>
-        <p>${carrito.nombre}</p>
-        <p>$${carrito.precio}</p>
+            )
+            :
+            //Si el carrito no posee productos y se presiona comprar. 
+            Swal.fire(
+                `¡Aun no posee productos en su carrito!`,
+                `Seleccione el producto que desee y vuelva a intentarlo`,
+                `error`
+                );
+                carrito.length=0;
+            }
+            /* Carrito */
+            const agregarCarrito = () => {
+                carro.innerHTML = ""
+                carrito.forEach((carrito) => {
+                    const div = document.createElement("div")
+                    div.className = "carrito"
+                    div.innerHTML = `
+                    <img src="${carrito.img}" class="img"></img>
+                    <p>${carrito.nombre}</p>
+                    <p>$${carrito.precio}</p>
         `
         localStorage.setItem("Carrito", JSON.stringify(carrito))
         carro.appendChild(div)
     })
     precioTotal.innerText = carrito.reduce((acumulador, productos) => acumulador + productos.precio, 0) 
+}
+/* Local Storage */
+if(localStorage.getItem("carrito")){
+    carrito=JSON.parse(localStorage.getItem("carrito"))
+    agregarCarrito()
 }
