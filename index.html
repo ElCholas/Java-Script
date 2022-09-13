@@ -15,16 +15,18 @@
 </head>
 
 <!-- Body -->
+
 <body class="grid">
     <!-- Header -->
     <header class="navbar">
         <h1 class="titulo">Todo Deportes</h1>
         <!-- Button trigger modal -->
-        <button id="carro" type="button" class="btn btn-primary button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping"></i></button>
+        <button id="carro" type="button" class="btn btn-primary button" data-bs-toggle="modal"
+            data-bs-target="#exampleModal"><i class="fa-solid fa-cart-shopping"></i></button>
     </header>
     <!-- Main -->
     <main>
-        <h2 class="subTitulo">Consegui tu conjunto de futbol al mejor precio.</h2>        
+        <h2 class="subTitulo">Consegui tu conjunto de futbol al mejor precio.</h2>
         <!-- Modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -38,6 +40,7 @@
                     </div>
                     <div class="modal-footer">
                         <p class="precioTotal">Precio Total: $<span id="precioTotal">0</span></p>
+                        <button type="button" id="VaciarCarrito" class="btn btn-secondary">Vaciar Carrito</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         <button type="button" id="comprar" class="btn btn-primary">Comprar</button>
                     </div>
@@ -50,9 +53,9 @@
     </main>
     <!-- Footer -->
     <footer class="piePagina">
-        <p><strong>Ubicación:</strong>Argentina, Buenos aires.</p>
-        <p><Strong>Numero Tel:</Strong>02320-476040</p>
-        <p><strong>ENVÍOS A TODO EL PAÍS</strong></p>
+        <p class="footer"><strong>Ubicación:</strong> Argentina, Buenos aires.</p>
+        <p class="footer"><Strong>Numero Tel:</Strong> 02320-476040</p>
+        <p class="footer"><strong>ENVÍOS A TODO EL PAÍS</strong></p>
     </footer>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

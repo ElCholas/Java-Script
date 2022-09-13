@@ -1,6 +1,8 @@
 //  Simulador Interactivo 
 
+
 /* Constructor */
+
 class Producto {
     constructor(nombre, precio, talle) {
         this.nombre = nombre;
@@ -16,6 +18,7 @@ const carrito = []
 const precioTotal = document.getElementById("precioTotal")
 const carro = document.getElementById("contenedorCarrito")
 const seccion = document.getElementById("section")
+const vaciarCarrito = document.getElementById("VaciarCarrito")
 
 /* Llamada a productos */
 
@@ -26,7 +29,6 @@ function obtenerJson() {
     fetch(URLJSON)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             productos = data
             dibujarCarrito()
         })
@@ -48,7 +50,9 @@ function dibujarCarrito() {
         </div>
         `
         seccion.append(carta)
+
         /* Evento Button */
+
         let button = document.getElementById(`boton${producto.id}`)
         button.addEventListener("click", (e) => {
             e.preventDefault()
@@ -56,7 +60,7 @@ function dibujarCarrito() {
             console.log(producto)
             carrito.push(producto)
             Swal.fire(
-                'Producto: ' + producto.nombre,
+                '' + producto.nombre,
                 'Agregado al carrito',
                 'success'
             )
@@ -90,8 +94,8 @@ comprarCarrito.onclick = () => {
             `¡Aun no posee productos en su carrito!`,
             `Seleccione el producto que desee y vuelva a intentarlo`,
             `error`
-        );
-    carrito.length = 0;
+        ),
+        carrito.length = 0;
 }
 
 /* Carrito */
@@ -102,15 +106,33 @@ const agregarCarrito = () => {
         const div = document.createElement("div")
         div.className = "carrito"
         div.innerHTML = `
-                <img src="${carrito.img}" class="img"></img>
-                <p>${carrito.nombre}</p>
-                <p>$${carrito.precio}</p>
-                `
-        localStorage.setItem("Carrito", JSON.stringify(carrito))
+                    <img src="${carrito.img}" class="img"></img>
+                    <p>${carrito.nombre}</p>
+                    <p>$${carrito.precio}</p>
+                    <p><input id="talleProducto${carrito.id}" type="number" value="${carrito.talle}" min="1" max="50" step="1" class="talle"></input></p>
+                    <button onclick="eliminarProducto(${carrito.id})" class="Eliminar"><i class="fa-solid fa-trash-can logoTacho"></i></button>
+                    `
         carro.appendChild(div)
+        localStorage.setItem("Carrito", JSON.stringify(carrito))
     })
     precioTotal.innerText = carrito.reduce((acumulador, productos) => acumulador + productos.precio, 0)
 }
+
+/* Boton eliminar */
+
+const eliminarProducto = (nombre) => {
+    const item = carrito.find((carrito) => carrito.id === nombre)
+    const indice = carrito.indexOf(item)
+    carrito.splice(indice, 1)
+    agregarCarrito()
+} 
+
+/* Vaciar carrito */
+
+vaciarCarrito.addEventListener("click", () => {
+    carrito.length = 0
+    agregarCarrito()
+})
 
 /* Local Storage */
 

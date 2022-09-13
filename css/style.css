@@ -46,8 +46,10 @@
     display: flex;
     width: 100%;
     justify-content: center;
-    padding-top: 10rem;
     padding: 1rem;
+}
+.footer{
+    padding: 5px;
 }
 /* Carrito */
 .img{
@@ -70,9 +72,7 @@
     display: flex;
     padding: 2rem;
     margin-right: 5rem;
-    background-color: black;
-    color: white;
-    border-radius: 1rem;
+    color: black;
 }
 .Eliminar{
     height: 40px;
@@ -84,4 +84,7 @@
     justify-content: center;
     text-align: center;
     align-items: center;
+}
+.talle{
+    width: 50px;
 }
