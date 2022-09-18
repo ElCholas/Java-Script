@@ -6,7 +6,6 @@
         "img": "./img/boca.jpeg",
         "talle": ""
     },
-    
     {
         "id": 2,
         "nombre": "Camiseta River Plate",
@@ -14,7 +13,6 @@
         "img": "./img/river.jpeg",
         "talle": ""
     },
-    
     {
         "id": 3,
         "nombre": "Camiseta Argentina Qatar",
@@ -22,7 +20,6 @@
         "img": "./img/Argentina.jpeg",
         "talle": ""
     },
-    
     {
         "id": 4,
         "nombre": "Short Boca Juniors",
@@ -30,7 +27,6 @@
         "img": "./img/sBoca.jpg",
         "talle": ""
     },
-    
     {
         "id": 5,
         "nombre": "Short River Plate",
@@ -38,7 +34,6 @@
         "img": "./img/sRiver.jpg",
         "talle": ""
     },
-    
     {
         "id": 6,
         "nombre": "Short Argentina Qatar",
@@ -46,7 +41,6 @@
         "img": "./img/sArgentina.jpg",
         "talle": ""
     },
-    
     {
         "id": 7,
         "nombre": "Botines Nemeziz",
@@ -54,7 +48,6 @@
         "img": "./img/bNemeziz.jpg",
         "talle": ""
     },
-    
     {
         "id": 8,
         "nombre": "Botines Predator",
@@ -62,7 +55,6 @@
         "img": "./img/bPredator.jpg",
         "talle": ""
     },
-    
     {
         "id": 9,
         "nombre": "Botines X SpeedFlow",
@@ -70,12 +62,10 @@
         "img": "./img/bXspeedflow.jpg",
         "talle": ""
     },
-    
     {
         "id": 10,
         "nombre": "Pelota Qatar",
         "precio": 24999,
-        "img": "./img/pQatar.jpg",
-        "talle": ""
+        "img": "./img/pQatar.jpg"
     }
 ]

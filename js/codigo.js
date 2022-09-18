@@ -1,8 +1,6 @@
 //  Simulador Interactivo 
 
-
 /* Constructor */
-
 class Producto {
     constructor(nombre, precio, talle) {
         this.nombre = nombre;
@@ -14,13 +12,15 @@ class Producto {
 /* Constantes */
 
 let productos = []
-const carrito = []
+let carrito = []
+let comprarCarrito = document.getElementById("comprar")
 const precioTotal = document.getElementById("precioTotal")
 const carro = document.getElementById("contenedorCarrito")
 const seccion = document.getElementById("section")
 const vaciarCarrito = document.getElementById("VaciarCarrito")
 
-/* Llamada a productos */
+/* Llamada a funciones */
+
 
 obtenerJson()
 
@@ -64,79 +64,100 @@ function dibujarCarrito() {
                 'Agregado al carrito',
                 'success'
             )
-            agregarCarrito()
+            contCarrito()
         })
     }
 }
 
-/* Operador Avanzado */
+/* Interaccion con el usuario */
 
-carrito.length === 0
+/* Se le pide nombre y se le proporciona una oferta */
+
+const inputValue = ""
+const { value: usuario } = await Swal.fire({
+    title: "¡Bienvenido/a!",
+    input: "text",
+    inputLabel: "¡No te pierdas nuestras ofertas! Ingrese su nombre.",
+    inputValue: inputValue,
+    inputValidator: (value) => {
+        if (!value) {
+            return "¡Por favor, ingrese su nombre!"
+        }
+    }
+})
+if (usuario) {
+    Swal.fire(`Hola, ${usuario}. ¡Bienvenido/a!`)
+    let cartel = document.querySelector(`.intro`);
+    cartel.innerHTML = `<p class="productos_intro boxShadow" data-aos="fade-right" data-aos-delay="3000" data-aos-duration="1000">
+    ${usuario}, ¡Si sos amante del futbol. Con la compra de unos botines + pelota de qatar, te llevas de regalo unas medias y unas canilleras! </p>`
+}
+
+/* Advierte que el carrito esta vacio  */
+
+function carritoLength() {
+    carrito.length === 0
     ? (contenedorCarrito.innerHTML = `<p class= "carritoVacio">Carrito vacío, agregue su producto.</p>`)
     : (contenedorCarrito.innerHTML = "")
-
-/* Comprar */
-
-let comprarCarrito = document.getElementById("comprar")
-comprarCarrito.onclick = () => {
-    localStorage.removeItem("carrito", JSON.stringify(carrito))
-    carro.innerHTML = ""
-    carrito.length !== 0 ?
-        //Si el carrito tiene productos y se presiona comprar.
-        Swal.fire(
-            `¡Su compra se ha realizado con exito!`,
-            `No dude en volver a comprarnos`,
-            `success`
-        )
-        :
-        //Si el carrito no posee productos y se presiona comprar. 
-        Swal.fire(
-            `¡Aun no posee productos en su carrito!`,
-            `Seleccione el producto que desee y vuelva a intentarlo`,
-            `error`
-        ),
-        carrito.length = 0;
 }
+carritoLength()
 
 /* Carrito */
 
-const agregarCarrito = () => {
+const contCarrito = () => {
     carro.innerHTML = ""
     carrito.forEach((carrito) => {
         const div = document.createElement("div")
         div.className = "carrito"
         div.innerHTML = `
-                    <img src="${carrito.img}" class="img"></img>
-                    <p>${carrito.nombre}</p>
-                    <p>$${carrito.precio}</p>
-                    <p><input id="talleProducto${carrito.id}" type="number" value="${carrito.talle}" min="1" max="50" step="1" class="talle"></input></p>
-                    <button onclick="eliminarProducto(${carrito.id})" class="Eliminar"><i class="fa-solid fa-trash-can logoTacho"></i></button>
-                    `
+        <img src="${carrito.img}" class="img"></img>
+        <p>${carrito.nombre}</p>
+            <p>$${carrito.precio}</p>
+            <p>Talle  <input id="talleProducto" type="number" value="${carrito.talle}" min="1" max="50" step="1" class="talle"></input></p>
+            `
         carro.appendChild(div)
-        localStorage.setItem("Carrito", JSON.stringify(carrito))
     })
+    localStorage.setItem("carrito", JSON.stringify(carrito))
     precioTotal.innerText = carrito.reduce((acumulador, productos) => acumulador + productos.precio, 0)
 }
 
-/* Boton eliminar */
+    /* Comprar */
 
-const eliminarProducto = (nombre) => {
-    const item = carrito.find((carrito) => carrito.id === nombre)
-    const indice = carrito.indexOf(item)
-    carrito.splice(indice, 1)
-    agregarCarrito()
-} 
+    comprarCarrito.onclick = () => {
+        localStorage.removeItem("carrito", JSON.stringify(carrito))
+        precioTotal.innerText = 0
+        carro.innerHTML = ""
+        carrito.length !== 0 ?
+            //Si el carrito tiene productos y se presiona comprar.
+            Swal.fire(
+                `¡Gracias, su compra se ha realizado con exito!`,
+                `Estamos gestionando su envio`,
+                `success`
+            )
+            :
+            //Si el carrito no posee productos y se presiona comprar. 
+            Swal.fire(
+                `¡Aun no posee productos en su carrito!`,
+                `Seleccione el producto que desee y vuelva a intentarlo`,
+                `error`
+            ),
+            carrito.length = 0;
+    }
 
-/* Vaciar carrito */
+    /* Vaciar carrito */
 
-vaciarCarrito.addEventListener("click", () => {
-    carrito.length = 0
-    agregarCarrito()
-})
+    vaciarCarrito.addEventListener("click", () => {
+        carrito.length = 0
+        console.log(carrito)
+        contCarrito()
+    })
 
-/* Local Storage */
 
-if (localStorage.getItem("carrito")) {
-    carrito = JSON.parse(localStorage.getItem("carrito"))
-    agregarCarrito()
+/* Local storage */
+
+localstorage()
+function localstorage() {
+    if (localStorage.getItem("carrito")) {
+        carrito = JSON.parse(localStorage.getItem("carrito"))
+        contCarrito()
+    }
 }

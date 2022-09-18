@@ -1,25 +1,32 @@
 /*Reset*/
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 /*Body*/
+
 .grid{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: max-content auto max-content;
     height: 100vh;
 }
+
 /*Header*/
+
 .navbar{
     background-color: rgba(0, 255, 255, 0.192);
 }
+
 .subTitulo{
     text-align: center;
 }
 
 /*Cards*/
+
 .card_container{
     display: flex;
     align-items: center;
@@ -32,52 +39,64 @@
     border-radius: 5px;
     background-color: gray;
 }
+
 .imagen{
     width: 150px;
     height: 180px;
 }
+
 .tamanioremera{
     width: 150px;
     height: 200px;
     background-size: cover;
 }
 /*Footer*/
+
 .piePagina {
     display: flex;
     width: 100%;
     justify-content: center;
     padding: 1rem;
 }
+
 .footer{
     padding: 5px;
 }
+
 /* Carrito */
+
 .img{
     width: 60px;
 }
+
 .carrito{
     display: flex;
     justify-content: space-around;
     margin: 2rem;
 }
+
 .logoTacho{
     width: 15px; 
     height: 10px;
 }
+
 .button{
     display: flex;
     justify-content: end;
 }
+
 .precioTotal{
     display: flex;
     padding: 2rem;
     margin-right: 5rem;
     color: black;
 }
+
 .Eliminar{
     height: 40px;
     width: 40px;
 }
+
 .carritoVacio{
     display: flex;
     padding: 1rem;
@@ -85,6 +104,30 @@
     text-align: center;
     align-items: center;
 }
+
 .talle{
-    width: 50px;
+    width: 40px;
+    height: 20px;
+}
+
+/* Interaccion con usuario */
+
+.productos_intro {
+    position: fixed;
+    bottom: 19%;
+    right: 30px;
+    width: 18rem;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px solid rgba(34, 34, 34, 0.091);
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-size: 1.4rem;
+    background-color: rgba(255, 255, 255, 0.817);
+    color: #4d4d4d;
+    z-index: 10;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.37);
 }
